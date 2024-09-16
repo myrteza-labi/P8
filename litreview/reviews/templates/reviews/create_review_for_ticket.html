@@ -1,0 +1,18 @@
+{% extends 'reviews/base.html' %}
+
+{% block title %}Répondre au billet{% endblock %}
+
+{% block content %}
+<h2>Répondre au billet : {{ ticket.title }}</h2>
+<div class="ticket">
+    <p>{{ ticket.description }}</p>
+    {% if ticket.image %}
+        <img src="{{ ticket.image.url }}" alt="Image pour {{ ticket.title }}">
+    {% endif %}
+</div>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Publier la critique</button>
+</form>
+{% endblock %}

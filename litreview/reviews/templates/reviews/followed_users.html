@@ -1,0 +1,30 @@
+{% extends 'reviews/base.html' %}
+
+{% block title %}Utilisateurs suivis{% endblock %}
+
+{% block content %}
+<h2>Utilisateurs que vous suivez</h2>
+<ul>
+    {% for follow in followed_users %}
+    <li>
+        {{ follow.followed_user.username }}
+        <!-- Formulaire pour ne plus suivre l'utilisateur -->
+        <form action="{% url 'unfollow_user' follow.id %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit">Ne plus suivre</button>
+        </form>
+    </li>
+    {% empty %}
+    <p>Vous ne suivez aucun utilisateur.</p>
+    {% endfor %}
+</ul>
+
+<h2>Vos abonnés</h2>
+<ul>
+    {% for follower in followers %}
+    <li>{{ follower.user.username }}</li>
+    {% empty %}
+    <p>Vous n'avez aucun abonné.</p>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,15 @@
+<div class="review">
+    <h3>{{ review.headline }}</h3>
+    <p>Note : {{ review.rating }}/5</p>
+    <p>{{ review.body }}</p>
+    <p>Par {{ review.user.username }} le {{ review.time_created|date:"d M Y H:i" }}</p>
+    <div class="actions">
+        {% if review.user == user %}
+            <a href="{% url 'edit_review' review.id %}" class="button">Modifier</a>
+            <form action="{% url 'delete_review' review.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="button">Supprimer</button>
+            </form>
+        {% endif %}
+    </div>
+</div>

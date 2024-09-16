@@ -1,0 +1,16 @@
+{% extends 'reviews/base.html' %}
+
+{% block title %}Flux{% endblock %}
+
+{% block content %}
+<h2>Flux</h2>
+{% for post in posts %}
+    {% if post.content_type == 'TICKET' %}
+        {% include 'reviews/ticket_snippet.html' with ticket=post %}
+    {% elif post.content_type == 'REVIEW' %}
+        {% include 'reviews/review_snippet.html' with review=post %}
+    {% endif %}
+{% empty %}
+    <p>Aucun contenu à afficher.</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}LITReview{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'reviews/css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'feed' %}">Flux</a></li>
+                    <li><a href="{% url 'create_ticket' %}">Créer un billet</a></li>
+                    <li><a href="{% url 'create_review' %}">Créer une critique</a></li>
+                    <li><a href="{% url 'follow_user' %}">Suivre un utilisateur</a></li>
+                    <li><a href="{% url 'view_followed_users' %}">Utilisateurs suivis</a></li>
+                    <li><a href="{% url 'posts' %}">Mes publications</a></li>
+                    <li><a href="{% url 'logout' %}">Déconnexion</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Connexion</a></li>
+                    <li><a href="{% url 'signup' %}">Inscription</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2023 LITReview</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends 'reviews/base.html' %}
+
+{% block title %}Modifier le billet{% endblock %}
+
+{% block content %}
+<h2>Modifier le billet</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enregistrer les modifications</button>
+</form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'reviews/base.html' %}
+
+{% block title %}Créer une critique{% endblock %}
+
+{% block content %}
+<h2>Créer un billet et une critique</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h3>Billet</h3>
+    {{ ticket_form.as_p }}
+    <h3>Critique</h3>
+    {{ review_form.as_p }}
+    <button type="submit">Publier</button>
+</form>
+{% endblock %}

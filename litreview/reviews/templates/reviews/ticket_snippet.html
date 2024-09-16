@@ -1,0 +1,19 @@
+<div class="ticket">
+    <h3>{{ ticket.title }}</h3>
+    <p>{{ ticket.description }}</p>
+    {% if ticket.image %}
+        <img src="{{ ticket.image.url }}" alt="Image pour {{ ticket.title }}">
+    {% endif %}
+    <p>Par {{ ticket.user.username }} le {{ ticket.time_created|date:"d M Y H:i" }}</p>
+    <div class="actions">
+        {% if ticket.user == user %}
+            <a href="{% url 'edit_ticket' ticket.id %}" class="button">Modifier</a>
+            <form action="{% url 'delete_ticket' ticket.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="button">Supprimer</button>
+            </form>
+        {% else %}
+            <a href="{% url 'create_review_for_ticket' ticket.id %}" class="button">Répondre</a>
+        {% endif %}
+    </div>
+</div>
