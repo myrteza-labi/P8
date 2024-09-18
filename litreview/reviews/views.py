@@ -1,36 +1,14 @@
-from django.shortcuts import get_object_or_404, render, redirect
-from django.contrib.auth import login, authenticate
+from itertools import chain
+
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import FollowUserForm, SignUpForm, TicketForm
-from itertools import chain
-from django.db.models import Value, CharField
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from .models import Review, Ticket, UserFollows, User
-from . import models
-from django.contrib.auth import logout
-from django.db.models import Q, Value, CharField
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from django.db.models import Q, Value, CharField
-from itertools import chain
-from .forms import SignUpForm, TicketForm, ReviewForm, FollowUserForm
-from .models import Ticket, Review, UserFollows, User
-from django.contrib.auth.decorators import login_required
+from django.db.models import CharField, Q, Value
 from django.shortcuts import get_object_or_404, redirect, render
 
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, redirect, render
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
-from .forms import TicketForm
-from .models import Ticket
-
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, redirect
-from .models import UserFollows
+from .forms import FollowUserForm, ReviewForm, SignUpForm, TicketForm
+from .models import Review, Ticket, User, UserFollows
 
 @login_required
 def unfollow_user(request, follow_id):
@@ -80,7 +58,7 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('feed')  # Ou utilisez LOGIN_REDIRECT_URL
+                return redirect('feed')
     else:
         form = AuthenticationForm()
     return render(request, 'reviews/login.html', {'form': form})

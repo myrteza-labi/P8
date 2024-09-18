@@ -41,5 +41,4 @@ class UserFollows(models.Model):
 
 
 class User(AbstractUser):
-    # Ajoutez des champs supplémentaires si nécessaire
     pass

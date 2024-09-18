@@ -1,11 +1,9 @@
-/* Reset des marges et des paddings */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Styles généraux */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -13,7 +11,6 @@ body {
     color: #333;
 }
 
-/* Styles pour le header */
 header {
     background-color: #fff;
     border-bottom: 1px solid #ccc;
@@ -44,20 +41,17 @@ nav ul li a:hover {
     color: #007BFF;
 }
 
-/* Styles pour le main content */
 main {
     max-width: 800px;
     margin: 2rem auto;
     padding: 0 1rem;
 }
 
-/* Styles pour les titres */
 h1, h2, h3 {
     margin-bottom: 1rem;
     color: #007BFF;
 }
 
-/* Styles pour les boutons */
 button, .button {
     background-color: #007BFF;
     color: #fff;
@@ -72,7 +66,6 @@ button:hover, .button:hover {
     background-color: #0056b3;
 }
 
-/* Styles pour les formulaires */
 form {
     margin-bottom: 2rem;
 }
@@ -91,7 +84,6 @@ form input, form textarea, form select {
     border-radius: 5px;
 }
 
-/* Styles pour les messages */
 .message {
     padding: 1rem;
     margin-bottom: 1rem;
@@ -108,7 +100,6 @@ form input, form textarea, form select {
     color: #721c24;
 }
 
-/* Styles pour les billets et critiques */
 .ticket, .review {
     background-color: #fff;
     padding: 1rem;
@@ -129,7 +120,6 @@ form input, form textarea, form select {
     margin-right: 0.5rem;
 }
 
-/* Styles pour le footer */
 footer {
     text-align: center;
     padding: 1rem;
@@ -138,7 +128,6 @@ footer {
     margin-top: 2rem;
 }
 
-/* Styles pour rendre le site responsive */
 @media (max-width: 600px) {
     nav ul {
         flex-direction: column;
